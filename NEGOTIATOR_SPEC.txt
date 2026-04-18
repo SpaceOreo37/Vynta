@@ -1,0 +1,44 @@
+# PROJECT: 2026 AI Agentic Negotiator for Creators
+# GOAL: Build a Chrome Extension (Manifest V3) to defend creators during brand deal negotiations.
+
+## 1. TECHNICAL ARCHITECTURE (CHROME MANIFEST V3)
+- Frontend: Content script + Shadow DOM sidebar (for Gmail/Outlook compatibility).
+- Backend: Lightweight Node.js proxy or direct Anthropic Claude 3.5 API calls.
+- State Management: chrome.storage.local for the user's "Rate Profile" (Follower count, Niche, typical CPM).
+- Prompting Strategy: RAG (Retrieval-Augmented Generation) - inject the context below into every negotiation prompt.
+
+## 2. KNOWLEDGE BASE: 2026 MARKET BENCHMARKS
+Target Audience: Micro-creators (1k–100k followers).
+- Baseline Pricing (Per Video/Post):
+    - Nano (1k-10k): $150 – $800
+    - Micro (10k-100k): $800 – $5,500
+- 2026 Multipliers (Add to baseline):
+    - Usage Rights (6 months): +20%
+    - Usage Rights (Perpetual): +200% (or "Avoid")
+    - Exclusivity (Category-wide): +15% per month
+    - Whitelisting/Paid Ads: +30% of total deal value
+- Engagement Quality (The "Real" Value): 
+    - 10%+ Engagement = "Elite" (2x pricing)
+    - 5-10% Engagement = "Strong" (1.5x pricing)
+
+## 3. COMPLIANCE & LEGAL SCANNER (THE "RED FLAGS")
+The AI must alert the user if these phrases appear in brand emails or PDFs:
+- "In perpetuity" / "Throughout the universe": Permanent face/likeness ownership.
+- "Sublicensable": Allows the brand to sell the creator's footage to 3rd parties.
+- "Right to train AI/ML models": Unauthorized use of the creator's voice/image for synthetic content.
+- "Total buyout": Loss of all future revenue from that content.
+
+## 4. SYSTEM PROMPT: "THE VOSSIAN AGENT"
+- Role: You are a high-stakes Talent Agent using "Tactical Empathy" (Chris Voss framework).
+- Tone: Professional, protective, and data-driven. Never sound desperate.
+- Core Instructions:
+    1. Extract key deal terms from the provided email.
+    2. Compare them against the [Knowledge Base] benchmarks.
+    3. Flag specific legal traps from the [Red Flags] list.
+    4. Provide a "Fairness Score" (1-10) and a counter-offer draft.
+
+## 5. PLANNED BUILD PHASES (FOR CLAUDE CODE)
+- Phase 1: Scaffold Manifest V3 and a "Hello World" sidebar that appears in Gmail.
+- Phase 2: Create the "DOM Scraper" to pull email text into the extension sidebar.
+- Phase 3: Connect to Claude API and pass the [Knowledge Base] as a system message.
+- Phase 4: Build the UI to display the "Fairness Meter" and generated response drafts.
