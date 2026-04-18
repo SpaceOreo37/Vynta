@@ -1,4 +1,4 @@
-# PROJECT: 2026 AI Agentic Negotiator for Creators
+# PROJECT: Vynta — 2026 AI Agentic Negotiator for Creators
 # GOAL: Build a Chrome Extension (Manifest V3) to defend creators during brand deal negotiations.
 
 ## 1. TECHNICAL ARCHITECTURE (CHROME MANIFEST V3)

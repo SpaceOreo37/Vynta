@@ -1,8 +1,8 @@
-# ⚡ Anchorly — AI Deal Agent for Creators
+# ⚡ Vynta — AI Deal Agent for Creators
 
 > A 2026-ready AI agent that lives in your browser to help you negotiate better, safer, and more profitable brand deals. Built for the modern creator-entrepreneur, it transforms your Gmail into a professional talent agency, ensuring you never leave money on the table or your identity at risk.
 
-![Version](https://img.shields.io/badge/version-0.4.0-blue)
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
 ![Manifest](https://img.shields.io/badge/manifest-v3-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
@@ -10,7 +10,7 @@
 
 ## What It Does
 
-Anchorly injects directly into Gmail. When you open a brand partnership email, one click runs the full analysis pipeline:
+Vynta injects directly into Gmail. When you open a brand partnership email, one click runs the full analysis pipeline:
 
 1. **Scrapes** the email body, subject, and sender — stripping quoted replies and signatures
 2. **Pre-scans** for legal red flags before a single API token is spent
@@ -46,7 +46,7 @@ The fairness score is not a gut-check — it is a deterministic, multi-step algo
 
 #### Relative Value Logic
 
-A flat dollar comparison is meaningless across tiers. Anchorly uses a **percentage-based Offer Multiplier**:
+A flat dollar comparison is meaningless across tiers. Vynta uses a **percentage-based Offer Multiplier**:
 
 ```
 offerMultiplier = offeredRate / tierTypical
@@ -74,7 +74,7 @@ If the Offer Multiplier is < 1.0×, **strict mode** activates: every applicable 
 
 ### 🛡️ 2026 AI-Likeness Protection
 
-Anchorly specifically scans for clauses that have become legally significant in 2026, including under the Tennessee ELVIS Act and similar state-level legislation:
+Vynta specifically scans for clauses that have become legally significant in 2026, including under the Tennessee ELVIS Act and similar state-level legislation:
 
 | Clause | Risk | Penalty |
 |---|---|---|
@@ -121,9 +121,8 @@ Drafts can be copied to clipboard or auto-injected directly into the Gmail reply
 ## Architecture
 
 ```
-Anchorly/
+Vynta/
 ├── manifest.json                  # MV3 manifest
-├── config.js                      # API key (git-ignored)
 ├── market_rates.json              # 2026 benchmark data
 ├── src/
 │   ├── background/
@@ -156,25 +155,22 @@ Anchorly/
 
 **1. Clone the repository**
 ```bash
-git clone https://github.com/your-username/anchorly.git
-cd anchorly
+git clone https://github.com/your-username/vynta.git
+cd vynta
 ```
 
 **2. Add your API key**
 
-Open `config.js` and paste your key:
-```js
-const NEGOTIATOR_API_KEY = 'sk-ant-...';
-```
-
-This file is listed in `.gitignore` and will never be committed.
+Click the **⚙** icon inside the Vynta sidebar → scroll to **AI Configuration** → paste your Anthropic API key → **Save Key**. Your key is stored locally in `chrome.storage.local` and never sent anywhere except directly to the Anthropic API.
 
 **3. Load the extension**
 
 - Navigate to `chrome://extensions`
 - Enable **Developer mode** (toggle, top right)
 - Click **Load unpacked**
-- Select the `Anchorly/` folder
+- Select the `Vynta/` folder
+
+
 
 **4. Set your Rate Card**
 
@@ -221,9 +217,8 @@ A score of **9.0–10.0** requires: Offer Multiplier ≥ 1.5×, at least one val
 ## Privacy
 
 - All processing happens locally in your browser
-- Email text is sent only to the Anthropic API using **your own API key** — no Anchorly server ever sees it
-- The Rate Card (follower count, niche, engagement) is stored in `chrome.storage.local` — never transmitted
-- `config.js` is git-ignored to prevent accidental key exposure
+- Email text is sent only to the Anthropic API using **your own API key** — no Vynta server ever sees it
+- Your API key and Rate Card are stored in `chrome.storage.local` — never transmitted to any Vynta server
 
 ---
 
