@@ -1,0 +1,194 @@
+/* sidebar.css — Scoped inside Shadow DOM; no Gmail style leakage possible. */
+
+:host {
+  all: initial;
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 380px;
+  height: 100vh;
+  z-index: 99999;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+}
+
+/* Slide-in animation */
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes slideOut {
+  from { transform: translateX(0);    opacity: 1; }
+  to   { transform: translateX(100%); opacity: 0; }
+}
+
+.vynta-panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border-left: 1px solid #e0e0e0;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12);
+  animation: slideIn 0.25s ease-out forwards;
+  overflow: hidden;
+}
+
+.vynta-panel.closing {
+  animation: slideOut 0.2s ease-in forwards;
+}
+
+/* Header */
+.vynta-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #1a73e8;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.vynta-header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vynta-logo {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.vynta-title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+.vynta-subtitle {
+  font-size: 11px;
+  opacity: 0.8;
+  margin: 2px 0 0;
+  font-weight: 400;
+}
+
+.vynta-close-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  line-height: 1;
+  opacity: 0.8;
+  transition: opacity 0.15s;
+}
+
+.vynta-close-btn:hover {
+  opacity: 1;
+  background: rgba(255,255,255,0.15);
+}
+
+/* Body */
+.vynta-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Status card */
+.vynta-status-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e8eaed;
+  text-align: center;
+  gap: 12px;
+}
+
+.vynta-status-icon {
+  font-size: 40px;
+  line-height: 1;
+}
+
+.vynta-status-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a73e8;
+  margin: 0;
+}
+
+.vynta-status-desc {
+  font-size: 13px;
+  color: #5f6368;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Phase indicators (preview of future phases) */
+.vynta-phases {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vynta-phases-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #80868b;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 4px;
+}
+
+.vynta-phase-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #e8eaed;
+  font-size: 13px;
+}
+
+.vynta-phase-item.active {
+  background: #e8f0fe;
+  border-color: #c5d8fb;
+}
+
+.vynta-phase-item.pending {
+  background: #fff;
+  color: #80868b;
+}
+
+.vynta-phase-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 99px;
+  flex-shrink: 0;
+}
+
+.vynta-phase-item.active  .vynta-phase-badge { background: #1a73e8; color: #fff; }
+.vynta-phase-item.pending .vynta-phase-badge { background: #e8eaed; color: #5f6368; }
+
+/* Footer */
+.vynta-footer {
+  padding: 14px 20px;
+  border-top: 1px solid #e8eaed;
+  font-size: 11px;
+  color: #80868b;
+  text-align: center;
+  flex-shrink: 0;
+}

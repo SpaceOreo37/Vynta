@@ -1,0 +1,375 @@
+{
+  "_meta": {
+    "version": "2.0.0",
+    "updated": "2026",
+    "sources": [
+      "Influencer Marketing Hub 2026",
+      "Later / Hootsuite Influencer Reports 2026",
+      "Afluencer Rate Guide 2026",
+      "Shopify Influencer Pricing Guide 2026",
+      "InfluenceFlow Benchmarks 2026",
+      "NeoReach Creator Economy Report 2026",
+      "NEGOTIATOR_SPEC.txt §2 §3"
+    ],
+    "scoring": {
+      "base_score": 5.0,
+      "max_score": 10.0,
+      "min_score": 1.0,
+      "description": "Starts at 5.0 (neutral). Adjustments are applied for rate fairness, deliverable effort, usage rights, red flags, and value-add structures. Final score is clamped to [1, 10]."
+    }
+  },
+
+  "base_rates": {
+    "description": "USD per sponsored deliverable, by follower tier. Source: 2026 market surveys across IG/TT/YT.",
+    "nano": {
+      "label": "Nano Creator",
+      "follower_range": "1,000 – 10,000",
+      "per_post_min": 150,
+      "per_post_max": 800,
+      "per_post_typical": 250,
+      "score_weight": {
+        "at_or_above_max": 2.5,
+        "at_typical": 0.0,
+        "at_min": -1.5,
+        "below_min": -3.5
+      }
+    },
+    "micro": {
+      "label": "Micro Creator",
+      "follower_range": "10,000 – 100,000",
+      "per_post_min": 800,
+      "per_post_max": 5500,
+      "per_post_typical": 2000,
+      "score_weight": {
+        "at_or_above_max": 2.5,
+        "at_typical": 0.0,
+        "at_min": -1.5,
+        "below_min": -3.5
+      }
+    },
+    "mid_tier": {
+      "label": "Mid-Tier Creator",
+      "follower_range": "100,000 – 500,000",
+      "per_post_min": 2000,
+      "per_post_max": 35000,
+      "per_post_typical": 12000,
+      "score_weight": {
+        "at_or_above_max": 2.5,
+        "at_typical": 0.0,
+        "at_min": -1.5,
+        "below_min": -3.5
+      }
+    }
+  },
+
+  "deliverable_multipliers": {
+    "description": "Applied to base rate to determine expected compensation for effort level. Reference: static Instagram feed post = 1.0x.",
+    "instagram_static_post": {
+      "label": "Instagram Static Post",
+      "multiplier": 1.0,
+      "effort": "low",
+      "score_modifier": 0.0
+    },
+    "instagram_story_set": {
+      "label": "Instagram Stories (3–5 frames)",
+      "multiplier": 0.4,
+      "effort": "low",
+      "score_modifier": 0.0,
+      "note": "Often bundled; rate should be 40% of a feed post"
+    },
+    "instagram_reel": {
+      "label": "Instagram Reel",
+      "multiplier": 1.35,
+      "effort": "high",
+      "score_modifier": -0.5,
+      "note": "High production effort. Score penalised if rate not adjusted accordingly."
+    },
+    "tiktok_video": {
+      "label": "TikTok Video",
+      "multiplier": 0.75,
+      "effort": "medium",
+      "score_modifier": 0.0
+    },
+    "youtube_short": {
+      "label": "YouTube Short",
+      "multiplier": 1.25,
+      "effort": "medium",
+      "score_modifier": 0.0
+    },
+    "youtube_integration": {
+      "label": "YouTube Long-form Integration",
+      "multiplier": 2.0,
+      "effort": "very_high",
+      "score_modifier": -0.75,
+      "note": "Requires scripting, editing, high production time."
+    },
+    "live_qa": {
+      "label": "Live Q&A / Live Stream",
+      "multiplier": 1.8,
+      "effort": "very_high",
+      "score_modifier": -1.0,
+      "note": "Premium effort: real-time, no editing control, high reputational risk.",
+      "retainer_exception": true,
+      "retainer_exception_note": "Score modifier is waived if part of a monthly retainer deal (retainer bonus offsets this)."
+    },
+    "podcast_mention": {
+      "label": "Podcast Mention / Ad Read",
+      "multiplier": 1.2,
+      "effort": "low",
+      "score_modifier": 0.0
+    },
+    "blog_post": {
+      "label": "Blog Post / Article",
+      "multiplier": 1.5,
+      "effort": "high",
+      "score_modifier": -0.25
+    },
+    "ugc_only": {
+      "label": "UGC (User Generated Content, not posted)",
+      "multiplier": 0.6,
+      "effort": "medium",
+      "score_modifier": 0.0,
+      "note": "Creator produces but doesn't post. Brand pays for content creation only."
+    }
+  },
+
+  "usage_rights": {
+    "description": "Percentage premium added on top of base content fee. Score modifier reflects fairness of compensation for rights granted.",
+    "organic_only": {
+      "label": "Organic Use Only",
+      "premium_pct": 0,
+      "score_modifier": 0.0
+    },
+    "30_days": {
+      "label": "30-Day Usage Rights",
+      "premium_pct": 10,
+      "score_modifier": 0.0
+    },
+    "90_days": {
+      "label": "90-Day Usage Rights",
+      "premium_pct": 22,
+      "fair_min_pct": 20,
+      "score_modifier_if_paid": 0.0,
+      "score_modifier_if_unpaid": -1.0
+    },
+    "6_months": {
+      "label": "6-Month Usage Rights",
+      "premium_pct": 45,
+      "fair_min_pct": 40,
+      "score_modifier_if_paid": 0.0,
+      "score_modifier_if_unpaid": -1.5
+    },
+    "1_year": {
+      "label": "1-Year Usage Rights",
+      "premium_pct": 68,
+      "fair_min_pct": 60,
+      "score_modifier_if_paid": 0.0,
+      "score_modifier_if_unpaid": -2.5
+    },
+    "perpetual": {
+      "label": "Perpetual / In Perpetuity",
+      "premium_pct": 125,
+      "fair_min_pct": 100,
+      "score_modifier_if_paid": -1.0,
+      "score_modifier_if_unpaid": -4.5,
+      "recommendation": "Advise creator to refuse unless paid 100–150% premium over base."
+    }
+  },
+
+  "exclusivity": {
+    "description": "Monthly exclusivity premiums. Excessive exclusivity is a red flag.",
+    "none": {
+      "label": "No Exclusivity",
+      "score_modifier": 0.5,
+      "note": "Positive signal — creator retains freedom."
+    },
+    "category_1_month": {
+      "label": "Category Exclusivity — 1 Month",
+      "premium_pct": 15,
+      "score_modifier": 0.0
+    },
+    "category_3_months": {
+      "label": "Category Exclusivity — 3 Months",
+      "premium_pct": 45,
+      "score_modifier_if_paid": -0.25,
+      "score_modifier_if_unpaid": -1.5
+    },
+    "category_6_months": {
+      "label": "Category Exclusivity — 6 Months",
+      "premium_pct": 90,
+      "score_modifier_if_paid": -0.75,
+      "score_modifier_if_unpaid": -2.5,
+      "flag": "excessive"
+    },
+    "full_exclusivity": {
+      "label": "Full / Total Exclusivity",
+      "premium_pct": 200,
+      "score_modifier_if_paid": -1.0,
+      "score_modifier_if_unpaid": -3.5,
+      "flag": "excessive"
+    }
+  },
+
+  "whitelisting_paid_ads": {
+    "description": "Charged on top of content creation fee. 30% per month is the 2026 market standard.",
+    "standard_monthly_add_on_pct": 30,
+    "score_modifier_if_paid": 0.0,
+    "score_modifier_if_unpaid": -2.0,
+    "note": "Whitelisting grants brand run-of-network ad rights using the creator's handle. Must be compensated separately."
+  },
+
+  "engagement_multipliers": {
+    "description": "Applied as a modifier to expected compensation tier.",
+    "elite": {
+      "label": "Elite Engagement (10%+)",
+      "rate_multiplier": 2.0,
+      "score_bonus": 1.0
+    },
+    "strong": {
+      "label": "Strong Engagement (5–10%)",
+      "rate_multiplier": 1.5,
+      "score_bonus": 0.5
+    },
+    "average": {
+      "label": "Average Engagement (<5%)",
+      "rate_multiplier": 1.0,
+      "score_bonus": 0.0
+    }
+  },
+
+  "niche_multipliers": {
+    "description": "Certain niches command premium rates due to audience intent and CPM value.",
+    "finance": { "label": "Finance / Investing", "multiplier": 1.75, "score_bonus": 0.5 },
+    "tech": { "label": "Technology / SaaS", "multiplier": 1.50, "score_bonus": 0.25 },
+    "health_wellness": { "label": "Health & Wellness", "multiplier": 1.30, "score_bonus": 0.25 },
+    "luxury": { "label": "Luxury / High-End", "multiplier": 2.0, "score_bonus": 0.5 },
+    "beauty_fashion": { "label": "Beauty & Fashion", "multiplier": 1.0, "score_bonus": 0.0 },
+    "fitness": { "label": "Fitness & Sport", "multiplier": 1.15, "score_bonus": 0.0 },
+    "food_cooking": { "label": "Food & Cooking", "multiplier": 0.95, "score_bonus": 0.0 },
+    "travel": { "label": "Travel", "multiplier": 1.0, "score_bonus": 0.0 },
+    "gaming": { "label": "Gaming", "multiplier": 0.85, "score_bonus": 0.0 },
+    "education": { "label": "Education", "multiplier": 1.1, "score_bonus": 0.0 },
+    "comedy_entertainment": { "label": "Comedy & Entertainment", "multiplier": 0.95, "score_bonus": 0.0 },
+    "lifestyle": { "label": "General Lifestyle", "multiplier": 1.0, "score_bonus": 0.0 }
+  },
+
+  "value_add_bonuses": {
+    "description": "Positive deal structures that increase score. A deal cannot reach 9–10 without at least one value-add.",
+    "monthly_retainer": {
+      "label": "Monthly Retainer Structure",
+      "score_bonus": 2.0,
+      "condition": "Deal includes a recurring monthly payment over 2+ months.",
+      "reasoning": "Stable income, brand commitment, reduced admin overhead. 54% of brands use retainers in 2026.",
+      "also_waives": ["live_qa score modifier"]
+    },
+    "affiliate_commission": {
+      "label": "Affiliate / Revenue Share Commission",
+      "score_bonus": 1.5,
+      "condition": "Deal includes a percentage commission on sales driven by creator.",
+      "reasoning": "Upside participation, aligns incentives, recognises creator's conversion power.",
+      "fair_commission_min_pct": 8,
+      "fair_commission_typical_pct": 15
+    },
+    "performance_bonus": {
+      "label": "Performance Bonus / KPI Bonus",
+      "score_bonus": 1.0,
+      "condition": "Deal includes bonus payment triggered by hitting engagement or reach targets.",
+      "reasoning": "Rewards creator for over-delivery. Positive alignment signal."
+    },
+    "content_approval_rights": {
+      "label": "Creator Content Approval Rights",
+      "score_bonus": 0.5,
+      "condition": "Contract explicitly grants creator final approval or veto on edits.",
+      "reasoning": "Protects brand safety and creative integrity."
+    },
+    "kill_fee_clause": {
+      "label": "Kill Fee / Cancellation Protection",
+      "score_bonus": 0.5,
+      "condition": "Contract includes a kill fee (typically 25–50% of deal value) if brand cancels.",
+      "reasoning": "Protects creator from last-minute cancellations that waste their time."
+    },
+    "ip_retention": {
+      "label": "Creator Retains IP / Copyright",
+      "score_bonus": 0.75,
+      "condition": "Creator retains copyright and IP of content produced.",
+      "reasoning": "Protects long-term monetisation ability."
+    }
+  },
+
+  "risk_penalties": {
+    "description": "Hard deductions applied when red flag clauses are detected. These override value-add bonuses.",
+    "ai_likeness_training": {
+      "label": "AI / ML Likeness Training Rights",
+      "score_penalty": -4.5,
+      "severity": "critical",
+      "triggers": ["train AI", "train ML", "machine learning model", "synthetic content", "voice cloning", "AI model training"],
+      "reasoning": "Authorises brand to replicate creator's voice and face via AI without ongoing consent or compensation. Criminalised in several US states (Tennessee ELVIS Act, 2026).",
+      "negotiation": "Refuse unless compensated with a separate one-time licensing fee equivalent to 50–100% of the total deal value."
+    },
+    "perpetuity_clause": {
+      "label": "Perpetual Rights / 'In Perpetuity'",
+      "score_penalty": -3.5,
+      "severity": "critical",
+      "triggers": ["in perpetuity", "perpetual", "throughout the universe", "irrevocable", "forever"],
+      "reasoning": "Brand can use content indefinitely for any purpose at no additional cost. Creator loses all future licensing leverage.",
+      "negotiation": "Counter with 12-month maximum with renewal option at 50% of original rate."
+    },
+    "total_buyout": {
+      "label": "Total Buyout / Full Rights Transfer",
+      "score_penalty": -3.0,
+      "severity": "critical",
+      "triggers": ["total buyout", "full buyout", "all rights", "assigns all", "work for hire"],
+      "reasoning": "Creator forfeits all copyright and future revenue from the content. Creators earning royalties make 40% more annually than buyout-only creators (2026 data).",
+      "negotiation": "Require 100–300% premium over standard rate, or retain rights with 12-month license."
+    },
+    "sublicensable": {
+      "label": "Sublicensable Rights",
+      "score_penalty": -2.5,
+      "severity": "high",
+      "triggers": ["sublicensable", "sublicense", "sub-license", "assign to third parties", "transfer to affiliates"],
+      "reasoning": "Brand can sell or license creator's content to third parties — including competitors — without creator knowledge or additional payment."
+    },
+    "excessive_exclusivity": {
+      "label": "Excessive Exclusivity (6+ months unpaid)",
+      "score_penalty": -2.0,
+      "severity": "high",
+      "triggers": ["exclusive", "exclusivity", "not work with competitors", "category exclusive"],
+      "threshold_months": 6,
+      "reasoning": "Long exclusivity windows significantly restrict creator's income without equivalent compensation."
+    },
+    "undefined_usage_channels": {
+      "label": "Undefined / Unlimited Usage Channels",
+      "score_penalty": -1.5,
+      "severity": "medium",
+      "triggers": ["any and all media", "all channels", "all platforms", "any purpose", "any medium"],
+      "reasoning": "Gives brand unlimited distribution rights across TV, OOH, web, and paid ads without specifying or compensating for each use case."
+    },
+    "no_content_removal": {
+      "label": "No Content Removal Rights",
+      "score_penalty": -1.0,
+      "severity": "medium",
+      "triggers": ["cannot request removal", "brand may retain", "no takedown"],
+      "reasoning": "Creator cannot remove content even if their values or personal brand evolve."
+    }
+  },
+
+  "scoring_algorithm": {
+    "description": "Step-by-step scoring logic for the AI to follow.",
+    "steps": [
+      "1. Start at base_score: 5.0",
+      "2. Determine creator tier (nano/micro/mid_tier) from follower count if provided.",
+      "3. Extract the offered rate from the email. Compare to tier's per_post_typical. Apply rate score_weight based on where offer falls relative to min/typical/max.",
+      "4. Identify deliverable type(s). Apply deliverable score_modifier for each. If Live Q&A is included AND monthly_retainer is also present, waive the live_qa penalty.",
+      "5. Identify usage rights duration. Apply score_modifier_if_paid or score_modifier_if_unpaid based on whether the contract compensates for them.",
+      "6. Identify exclusivity terms. Apply corresponding score modifier.",
+      "7. Identify whitelisting/paid ads. Apply modifier if uncompensated.",
+      "8. Apply engagement_multiplier bonus if creator profile includes engagement rate.",
+      "9. Apply niche_multiplier score_bonus if niche is known.",
+      "10. Scan for value_add_bonuses (retainer, commission, performance bonus, IP retention, kill fee). Apply each bonus found.",
+      "11. Scan for risk_penalties. Apply each penalty found. Penalties stack and are NOT capped.",
+      "12. A score of 9–10 requires: rate at or above typical for tier AND at least one value_add_bonus AND zero critical risk penalties.",
+      "13. Clamp final score to [1.0, 10.0]. Round to nearest 0.5 for display.",
+      "14. Return score_breakdown array listing each adjustment with label and value."
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 300px;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+  font-size: 13px;
+  color: #202124;
+  background: #fff;
+}
+
+.popup-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: #1a73e8;
+  color: #fff;
+}
+
+.popup-logo {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.popup-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.popup-subtitle {
+  font-size: 11px;
+  opacity: 0.85;
+  margin-top: 1px;
+}
+
+.popup-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.popup-instructions {
+  color: #5f6368;
+  line-height: 1.5;
+}
+
+.popup-phase-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #e8f0fe;
+  color: #1a73e8;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 600;
+  align-self: flex-start;
+}
+
+.popup-section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #202124;
+  margin-bottom: 8px;
+}
+
+.popup-footer {
+  padding: 10px 16px;
+  border-top: 1px solid #e8eaed;
+  font-size: 11px;
+  color: #80868b;
+  text-align: center;
+}
+
+.popup-footer a {
+  color: #1a73e8;
+  text-decoration: none;
+}
