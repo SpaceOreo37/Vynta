@@ -5,14 +5,17 @@
   "description": "Vynta: Your AI negotiator. Detects predatory brand terms and calculates fair market rates for creators.",
 
   "permissions": [
-    "storage",
-    "activeTab"
+    "storage"
   ],
 
   "host_permissions": [
     "https://mail.google.com/*",
     "https://api.anthropic.com/*"
   ],
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
 
   "background": {
     "service_worker": "src/background/service-worker.js"
